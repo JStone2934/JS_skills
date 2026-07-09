@@ -4,9 +4,9 @@ description: >-
   Generates a Chinese tabloid/newspaper front-page image that introduces the
   current project with sensational headlines. Masthead name and masthead typography
   adapt to each project's domain and tone (not a fixed default). Reads README for
-  facts; embeds 1–3 README images as inset illustrations when present. Use only when
-  the user explicitly invokes this skill (e.g. @newspaper-project-front) or asks to
-  follow it by name.
+  facts; embeds 1–3 README images as inset illustrations when present. Default landscape
+  4:3; user may request portrait 竖版 (3:4) in prompt. Use only when the user explicitly
+  invokes this skill (e.g. @newspaper-project-front) or asks to follow it by name.
 disable-model-invocation: true
 ---
 
@@ -98,12 +98,25 @@ Progress:
 
 日期行用**当天**真实日期；版次语可随项目微调（如硬件项目用「创客专刊」，AI 项目用「智能号外」）。完整 GenerateImage 骨架见 [prompt-template.md](prompt-template.md)。
 
+#### 3b. 版式取向（横版 / 竖版）
+
+| 取向 | 触发词（用户 prompt 中出现即采用） | `aspect_ratio` | 文件名后缀 |
+|------|-----------------------------------|----------------|------------|
+| **横版**（默认） | 未指定，或「横版」「横屏」「landscape」 | `4:3` | 无 |
+| **竖版** | 「竖版」「纵向」「竖屏」「portrait」 | `3:4` | `-portrait` |
+
+规则：
+
+- 用户若同时说横竖，**以最后一次明确指定为准**；仍含糊则默认横版。
+- 竖版时 prompt 须写明 **portrait / vertical layout**：报头置顶、主标题通栏、正文栏**自上而下叠放**（可保留侧栏小块，但勿强行左右双栏）；流程条放底部纵向或折行横排。
+- 校验竖版时额外看：是否明显竖长、主标题是否仍可读、版心是否像报纸竖版而非手机海报。
+
 ### 4. 出图
 
 调用 `GenerateImage`：
 
-- `aspect_ratio`：默认 `4:3`
-- `filename`：`{project-slug}-newspaper-front.png`（小写、连字符）
+- `aspect_ratio`：默认 `4:3`；用户要竖版时用 `3:4`（见 §3b）
+- `filename`：`{project-slug}-newspaper-front.png`（横版）或 `{project-slug}-newspaper-front-portrait.png`（竖版）；小写、连字符
 - 若有 README 图：把 1–3 个**绝对路径**写入 `reference_image_paths`
 - `description`：按 [prompt-template.md](prompt-template.md) 填空；**必须写入**本项目拟定的 `masthead` 与 `masthead_typography`；并硬性写明：
   - 参考图只能作**栏内/中部一侧的小插图（inset）**，1–3 张
@@ -116,6 +129,7 @@ Progress:
 
 - 主标题是否可读（中文少糊字）
 - 报名、报头字体是否与项目气质匹配（不同项目不应千篇一律）
+- 横竖版是否与用户指定一致（竖版应为明显纵向版心）
 - 引脚、命令、触发条件等是否与 README 一致
 - 配图是否像小插图，而非主导整版
 
@@ -124,7 +138,7 @@ Progress:
 ### 6. 交付
 
 - 在对话中展示图片（客户端会显示；勿重复贴大段 Markdown 图链）
-- 用**简体中文**简短说明：拟定的报名、报头字体取向、主标题、是否用了 README 配图
+- 用**简体中文**简短说明：拟定的报名、报头字体取向、主标题、横版或竖版、是否用了 README 配图
 - **默认不修改**仓库 README/代码；不提交 git
 - 不把图写入仓库，除非用户另行要求
 

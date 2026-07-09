@@ -4,10 +4,20 @@ Fill every `{{slot}}`, then pass the result as `description`. Keep Chinese headl
 
 **Do not reuse a fixed masthead across projects.** Derive `masthead` and `masthead_typography` from the current project's README tone, domain, and stack each time.
 
+## Orientation
+
+| User intent | `aspect_ratio` (tool arg) | `orientation` (prompt text) | `layout_hint` |
+|-------------|---------------------------|-------------------------------|---------------|
+| Default / 横版 | `4:3` | `landscape` | Classic broadsheet: masthead top, headline spanning width, left column + right sidebar side by side, flow bar at bottom |
+| 竖版 / portrait / 纵向 / 竖屏 | `3:4` | `portrait` | Vertical tabloid: masthead top, headline below, body columns **stacked top-to-bottom** (lead then sidebar, or narrow side column beside stacked blocks); flow bar at bottom, may wrap to two rows |
+
 ## Full template
 
 ```
-Chinese tabloid newspaper front page, landscape {{aspect_ratio}}, cream aged newsprint with grain and faint ink bleed. Classic Chinese newspaper columns and rules — NOT a modern marketing poster.
+Chinese tabloid newspaper front page, {{orientation}} {{aspect_ratio}}, cream aged newsprint with grain and faint ink bleed. Classic Chinese newspaper columns and rules — NOT a modern marketing poster.
+
+LAYOUT ({{orientation}}):
+{{layout_hint}}
 
 MASTHEAD (sharp Chinese, project-adaptive):
 - Newspaper name in large bold type: {{masthead}}
@@ -51,7 +61,9 @@ STYLE:
 
 | Slot | How to fill |
 |------|-------------|
-| `aspect_ratio` | `4:3` (tool arg); also say `4:3` in text |
+| `aspect_ratio` | `4:3` landscape (default) or `3:4` portrait when user asks 竖版 |
+| `orientation` | `landscape` or `portrait` — must match `aspect_ratio` |
+| `layout_hint` | Copy from Orientation table above; for portrait add: tall vertical page, columns stacked not forced side-by-side |
 | `masthead` | Fictional name tailored to project domain (4–8 Chinese chars). **No global default.** |
 | `masthead_typography` | Concrete font/style for masthead only, e.g. `粗黑宋体带油墨毛边，创客小报风` / `锐利现代黑体，偏科技周刊` / `仿宋庄重，学术内幕报` |
 | `date_line` | Today's date + edition tag matching project, e.g. `2026年7月9日 · 创客专刊 · 竟有这样的事` |
@@ -74,8 +86,11 @@ STYLE:
 
 When calling the tool: set `reference_image_paths` only if README images were selected; omit the INSET PHOTOS block (use the “no project photo” line) when count is 0.
 
+**Filename:** `{slug}-newspaper-front.png` (landscape) or `{slug}-newspaper-front-portrait.png` (portrait).
+
 ## Checklist before generate
 
+- [ ] `aspect_ratio` and `orientation` match user request (竖版 → `3:4` + portrait layout)
 - [ ] `masthead` and `masthead_typography` fit **this** project's README tone (not a reused default)
 - [ ] Main title is Chinese and sensational but not false
 - [ ] Pins/commands/triggers in lead or schematic match README
