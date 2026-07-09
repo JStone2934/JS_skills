@@ -18,6 +18,7 @@
 | [zhou-li-citation](.cursor/skills/zhou-li-citation/README.md)               | 《周礼》引用体：开篇即礼、随文屡引、篇末钤印        | [→ 阅读](.cursor/skills/zhou-li-citation/README.md)        |
 | [bible-citation](.cursor/skills/bible-citation/README.md)                   | 《圣经》引用体：开篇即经、译本语体、篇末「阿 门」     | [→ 阅读](.cursor/skills/bible-citation/README.md)          |
 | [newspaper-project-front](.cursor/skills/newspaper-project-front/README.md) | 项目小报头版：读 README 取材，生成中文报纸风宣传图 | [→ 阅读](.cursor/skills/newspaper-project-front/README.md) |
+| [street-ad-project](.cursor/skills/street-ad-project/README.md) | 街边小广告：土味/暧昧/混搭文案 + 按项目定制配色的 parody 海报 | [→ 阅读](.cursor/skills/street-ad-project/README.md) |
 
 
 ---
@@ -50,10 +51,15 @@
 │   ├── bible-citation/
 │   │   ├── SKILL.md
 │   │   └── README.md
-│   └── newspaper-project-front/
+│   ├── newspaper-project-front/
+│   │   ├── SKILL.md
+│   │   ├── README.md
+│   │   └── prompt-template.md
+│   └── street-ad-project/
 │       ├── SKILL.md
 │       ├── README.md
-│       └── prompt-template.md
+│       ├── prompt-template.md
+│       └── examples.md
 ├── quicksort_demo.py
 ├── merge_sort_demo.py
 └── README.md                 # 本页（总览）
