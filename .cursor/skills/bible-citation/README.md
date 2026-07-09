@@ -2,6 +2,8 @@
 
 [← 返回总览](../../../README.md)
 
+![bible-citation 头版宣传图](bible-citation-newspaper-front.png)
+
 ---
 
 ## 概览

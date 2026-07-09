@@ -2,6 +2,8 @@
 
 [← 返回总览](../../../README.md)
 
+![zhou-li-citation 头版宣传图](zhou-li-citation-newspaper-front.png)
+
 ---
 
 ## 概览

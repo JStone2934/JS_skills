@@ -2,6 +2,8 @@
 
 [← 返回总览](../../../README.md)
 
+![newspaper-project-front 头版宣传图](newspaper-project-front-newspaper-front.png)
+
 ---
 
 ## 概览

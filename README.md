@@ -1,8 +1,10 @@
-# 周礼_skills · 说明
+# JS_skills · 说明
 
 > **「设官分职，以为民极。」** — *《周礼·天官冢宰》*
 
 本仓收藏 **Cursor Agent Skills**（`.cursor/skills/` 下的 `SKILL.md`）与演示脚本。在对话中 `@` 对应 skill，助手即按该 skill 的条贯作答。
+
+![JS_skills 头版宣传图](assets/js-skills-newspaper-front.png)
 
 ---
 
@@ -10,11 +12,13 @@
 
 点击下方标题，进入各 skill 的说明页：
 
-| Skill | 说明 | 文档 |
-|-------|------|------|
-| [zhou-li-citation](.cursor/skills/zhou-li-citation/README.md) | 《周礼》引用体：开篇即礼、随文屡引、篇末钤印 | [→ 阅读](.cursor/skills/zhou-li-citation/README.md) |
-| [bible-citation](.cursor/skills/bible-citation/README.md) | 《圣经》引用体：开篇即经、译本语体、篇末「阿 门」 | [→ 阅读](.cursor/skills/bible-citation/README.md) |
+
+| Skill                                                                       | 说明                            | 文档                                                       |
+| --------------------------------------------------------------------------- | ----------------------------- | -------------------------------------------------------- |
+| [zhou-li-citation](.cursor/skills/zhou-li-citation/README.md)               | 《周礼》引用体：开篇即礼、随文屡引、篇末钤印        | [→ 阅读](.cursor/skills/zhou-li-citation/README.md)        |
+| [bible-citation](.cursor/skills/bible-citation/README.md)                   | 《圣经》引用体：开篇即经、译本语体、篇末「阿 门」     | [→ 阅读](.cursor/skills/bible-citation/README.md)          |
 | [newspaper-project-front](.cursor/skills/newspaper-project-front/README.md) | 项目小报头版：读 README 取材，生成中文报纸风宣传图 | [→ 阅读](.cursor/skills/newspaper-project-front/README.md) |
+
 
 ---
 
@@ -22,9 +26,9 @@
 
 1. **纳仓**：将整个仓库并入你的项目，或只复制 `.cursor/skills/` 到目标项目的 `.cursor/skills/`。
 2. **召之**：在 Cursor 对话中 `@` 对应路径，例如：
-   ```
+  ```
    @JS_skills/.cursor/skills/zhou-li-citation/SKILL.md
-   ```
+  ```
    路径以你当前工作区根目录为准。
 3. **释之**：同一会话中若明确说「勿用周礼体」等，以你的指令为准；再次 `@` 该 skill 则条贯恢复。
 
@@ -36,6 +40,8 @@
 
 ```
 周礼_skills/
+├── assets/
+│   └── js-skills-newspaper-front.png
 ├── .cursor/skills/
 │   ├── zhou-li-citation/
 │   │   ├── SKILL.md
