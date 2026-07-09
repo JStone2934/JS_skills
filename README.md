@@ -1,95 +1,63 @@
 # 周礼_skills · 说明
 
-## **「设官分职，以为民极。」**
+> **「设官分职，以为民极。」** — *《周礼·天官冢宰》*
 
-*《周礼·天官冢宰》*
-
-盖本仓之所藏，非金帛之府，乃 **Cursor** 中 **Agent Skills** 之宪章（`SKILL.md`）与一得之脚本。Skills 藏于 `.cursor/skills/`，若人 `@` 其篇，则助手出言有常：或引《周礼》以明条理，或引《圣经》以肃体裁，各从其志。下文**先示施用之法**，次列篇第，继疏二 skill 之职守大要，终及附录与所宜戒者。
+本仓收藏 **Cursor Agent Skills**（`.cursor/skills/` 下的 `SKILL.md`）与演示脚本。在对话中 `@` 对应 skill，助手即按该 skill 的条贯作答。
 
 ---
 
-## 一、施用之法（于 Cursor 中）
+## Skills 导航
 
-1. **纳仓**：或并本仓入尔之工程，或但取 `.cursor/skills/` 下诸 skill 之夹，置于尔项目 `.cursor/skills/` 之中。
-2. **召之**：于对话栏 `@` 其 `SKILL.md` 之径，例如
-  `@JS_skills/.cursor/skills/zhou-li-citation/SKILL.md`  
-   ——然径之首尾，必以尔工作区根柢为准，不可胶柱。
-3. **释之**：同话中若人明言罢用周礼、圣经之体，则从其令；若后日复 `@` 其篇，则条贯再张。
+点击下方标题，进入各 skill 的说明页：
+
+| Skill | 说明 | 文档 |
+|-------|------|------|
+| [zhou-li-citation](.cursor/skills/zhou-li-citation/README.md) | 《周礼》引用体：开篇即礼、随文屡引、篇末钤印 | [→ 阅读](.cursor/skills/zhou-li-citation/README.md) |
+| [bible-citation](.cursor/skills/bible-citation/README.md) | 《圣经》引用体：开篇即经、译本语体、篇末「阿 门」 | [→ 阅读](.cursor/skills/bible-citation/README.md) |
+| [newspaper-project-front](.cursor/skills/newspaper-project-front/README.md) | 项目小报头版：读 README 取材，生成中文报纸风宣传图 | [→ 阅读](.cursor/skills/newspaper-project-front/README.md) |
 
 ---
 
-## 二、篇第（目录）
+## 快速上手
+
+1. **纳仓**：将整个仓库并入你的项目，或只复制 `.cursor/skills/` 到目标项目的 `.cursor/skills/`。
+2. **召之**：在 Cursor 对话中 `@` 对应路径，例如：
+   ```
+   @JS_skills/.cursor/skills/zhou-li-citation/SKILL.md
+   ```
+   路径以你当前工作区根目录为准。
+3. **释之**：同一会话中若明确说「勿用周礼体」等，以你的指令为准；再次 `@` 该 skill 则条贯恢复。
+
+> 各 skill 均设 `disable-model-invocation: true`，**不会自动启用**，须你显式 `@` 或点名。
+
+---
+
+## 目录结构
 
 ```
-JS_skills/
-├── .cursor/
-│   └── skills/
-│       ├── zhou-li-citation/   # 《周礼》体
-│       │   ├── SKILL.md
-│       │   └── reference.md    # 旧牍存焉；skill 行时不得据此选句
-│       └── bible-citation/     # 《圣经》体
-│           └── SKILL.md
-├── quicksort_demo.py           # 排序二法之演示
-├── .gitignore
-└── README.md                   # 即本篇
+周礼_skills/
+├── .cursor/skills/
+│   ├── zhou-li-citation/
+│   │   ├── SKILL.md
+│   │   ├── README.md
+│   │   └── reference.md      # 旧牍存档；skill 运行时不得据此选句
+│   ├── bible-citation/
+│   │   ├── SKILL.md
+│   │   └── README.md
+│   └── newspaper-project-front/
+│       ├── SKILL.md
+│       ├── README.md
+│       └── prompt-template.md
+├── quicksort_demo.py
+├── merge_sort_demo.py
+└── README.md                 # 本页（总览）
 ```
 
 ---
 
-## 三、职要：zhou-li-citation（《周礼》引用）
+## 附录
 
-
-| 名物                           | 所掌                                                                                                 |
-| ---------------------------- | -------------------------------------------------------------------------------------------------- |
-| **篇**                        | `.cursor/skills/zhou-li-citation/SKILL.md`                                                         |
-| **号**                        | `zhou-li-citation`                                                                                 |
-| **何时从令**                     | 人 `@zhou-li-citation`，或 `@…/zhou-li-citation/SKILL.md`，或明言「从周礼体」；则自该 skill 生效之日起，**凡助手之答**，皆当依其条贯。 |
-| **disable-model-invocation** | `true`：不得作默启之具，**必待人召**。                                                                           |
-
-
-**其大较如此**（细则尽在 `SKILL.md`）：
-
-- **开篇即礼**：答语最前，先立礼引；至少一引《周礼》，并系篇题；经文之正文，须 `**## **「……」`**** 大号加粗、独占一行，出处则次行常体书之。
-- **随文屡引**：篇中宜密，句忌雷同到底；论证从宽，弱相关、套语收束，皆可容；**惟勿诬经**以就已说。
-- **礼书译笔**：除礼经大字行外，凡叙述、裁断、论证之汉语，宜近今译注疏之庄重书面语；代码之可执行者，仍从栈之常法，**注释**则宜与正文同调。
-- **篇末终判与钤印**：钤之先，须有一句至两句**自判**本轮大体是否合乎本 skill；合乎则钤 **「合 乎 周 礼」**（字间各空）；未合乎、或戏谑、或任意裁量，亦得钤 **「礼！崩！乐！坏！」**；皆一级标题、居中为度。
-- **诚实性**：引文以模型记忆为本；疑字、异文、人求覆按者，乃可网罗核对；**毋**开 `reference.md` 及仓中摘句以为据。
-- **与人令相碍**：人若明言「勿引《周礼》」「但取结论」等，**以人令为极**，并得省却篇末自判与钤印；后若再 `@` 本 skill，则复其常。
-
-### 如果本次操作合乎周礼文末就会打印
-
-#  合 乎 周 礼 
-
-### 否则 ...  
-
-# 礼！崩！乐！坏！
-
----
-
-## 四、职要：bible-citation（《圣经》引用）
-
-
-| 名物       | 所掌                                                                        |
-| -------- | ------------------------------------------------------------------------- |
-| **篇**    | `.cursor/skills/bible-citation/SKILL.md`                                  |
-| **号**    | `bible-citation`                                                          |
-| **何时从令** | 人 `@bible-citation`，或明言从圣经体；`disable-model-invocation` 亦 `true`，**必待人召**。 |
-
-
-**其大较如此**：
-
-- **开篇即经**、**随文屡引**：大例与周礼 skill 相俪；经文亦用 `## **「……」`** 与次行出处（如 `约翰福音 3:16`）。
-- **译本语体**：正文宜类和合本等通行汉译之语脉；注释同之；可执行之码，不改其惯。
-- **篇末钤印**：恒钤 **「阿 门」**（「阿」「门」间一空），亦一级标题、居中。
-- **诚实性**：记忆为先，疑则覆按；**毋**以本地 `reference.md` 为据；**毋**伪托卷章句读。
-
----
-
-## 五、附录：quicksort_demo.py
-
-此脚本以 **Python 3** 演**快速排序**与**堆排序**二法；又有 `quicksort`、`heapsort` 之封装，先副贰而后治，**不伤**人所传入列表之本体。其注释假《周礼》以喻算法，乃作者一时之兴，**非**与上二 skill 有必然之系，览者自可易之。
-
-于终端行之：
+- [quicksort_demo.py](quicksort_demo.py) — Python 3 演示快速排序与堆排序；注释借《周礼》喻算法，与 skills 无必然关联。
 
 ```bash
 python3 quicksort_demo.py
@@ -97,11 +65,11 @@ python3 quicksort_demo.py
 
 ---
 
-## 六、戒与声明
+## 声明
 
-- Skills 中文辞、体例，皆主人所自裁；引《周礼》《圣经》者，于版权、学术引用之宜，**各自省之**。
-- 若以此仓公之于 **GitHub**，**慎毋**以密钥、令牌、私牍之属杂厕其中，以致疏泄。
+- Skills 中文辞、体例由作者自定；引用《周礼》《圣经》时，请注意版权与学术引用规范。
+- 公开仓库时，勿提交密钥、令牌等敏感信息。
 
 ---
 
-*按：本篇 README 但述名物与职守，非 skill 生效中之「答语」本身，故不具篇末钤印之式；欲观钤印、密引之全，须 `@` 各 `SKILL.md` 而后令助手答他题，乃见其实。*
+*本页为总览索引；各 skill 的职守细则见上方链接。`SKILL.md` 为 Agent 实际执行的规则原文。欲观钤印、密引之全，须 `@` 各 `SKILL.md` 而后令助手答他题，乃见其实。*
